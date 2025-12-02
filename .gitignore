@@ -4,8 +4,11 @@ Ignore everything
 *
 /*
 
-But NOT the day1 folder and its contents
+But NOT the days folder and its contents
 */
 !day1/
 !day1/**
 day1/main.exe
+!day2/
+!day2/**
+day2/main.exe
