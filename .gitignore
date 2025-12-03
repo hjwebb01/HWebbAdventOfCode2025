@@ -6,9 +6,6 @@ Ignore everything
 
 But NOT the days folder and its contents
 */
-!day1/
-!day1/**
-day1/main.exe
-!day2/
-!day2/**
-day2/main.exe
+!day*/
+!day*/**
+
