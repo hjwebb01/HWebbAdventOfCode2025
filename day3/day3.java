@@ -13,16 +13,16 @@ public class day3 {
         String line = scanner.nextLine();
 
     }
-    
-    
+
+
     /*
-    dual pointers combined with sliding window 
+    dual pointers combined with sliding window
     [Left slides to highest tens slot and right iterates starting at the next index]
-    */ 
+    */
 
     static public int day3_part1(String line){
         char[] arrLine = line.toCharArray();
-        int l = 0; 
+        int l = 0;
         int r = 0;
         int maxFirstDig = arrLine[0];
         int maxSecondDig = arrLine[1];
@@ -34,4 +34,5 @@ public class day3 {
           }
 
     }
+  }
 }
