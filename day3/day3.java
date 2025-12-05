@@ -13,11 +13,14 @@ public class day3 {
     static public void main(String[] args) {
         try (Scanner scanner = new Scanner(new File("day3/input.txt"))) {
             int sum = 0;
+            long sum2 = 0;
             while(scanner.hasNextLine()){
                 String line = scanner.nextLine();
                 sum += day3_part1(line);
+                sum2 += day3_part2(line);
             }
             System.out.println(sum);
+            System.out.println(sum2);
         } catch (FileNotFoundException e) {
             System.err.println("Error: File not found - day3/input.txt");
         }
@@ -47,5 +50,36 @@ public class day3 {
         }
         
         return maxResult;
+    }
+
+    static public long day3_part2(String line){
+        char[] arr = line.toCharArray();
+        int n = arr.length;
+        if(n < 12) {
+            return 0L;
+        }
+
+        StringBuilder res = new StringBuilder(12);
+        int pos = 0;
+        int remaining = 12;
+
+        while(remaining > 0){
+            int maxPos = n - remaining;
+            char best = '0';
+            int bestIdx = pos;
+
+            for(int i = pos; i <= maxPos; i++){
+                if(arr[i] > best){
+                    best = arr[i];
+                    bestIdx = i;
+                }
+            }
+
+            res.append(best);
+            pos = bestIdx + 1;
+            remaining--;
+        }
+
+        return Long.parseLong(res.toString());
     }
 }
