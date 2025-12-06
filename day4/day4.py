@@ -34,6 +34,45 @@ def day4_part1(grid):
     return answer
 
 
+def day4_part2(grid):
+    if not grid:
+        return 0
+    row_count = len(grid)
+    col_count = len(grid[0])
+    neighbor_steps = [
+        (-1, -1),
+        (-1, 0),
+        (-1, 1),
+        (0, -1),
+        (0, 1),
+        (1, -1),
+        (1, 0),
+        (1, 1),
+    ]
+    steps = 0
+    while True:
+        exposed = []
+        for row in range(row_count):
+            for col in range(col_count):
+                if grid[row][col] != "@":
+                    continue
+                nearby_count = 0
+                for row_change, col_change in neighbor_steps:
+                    next_row = row + row_change
+                    next_col = col + col_change
+                    if 0 <= next_row < row_count and 0 <= next_col < col_count:
+                        if grid[next_row][next_col] == "@":
+                            nearby_count += 1
+                if nearby_count < 4:
+                    exposed.append((row, col))
+                    steps += 1
+        if not exposed:
+            return steps
+        for row, col in exposed:
+            grid[row][col] = "."
+    return steps
+
+
 def main():
     file = open("day4/input.txt")
     lines = file.readlines()
@@ -44,6 +83,7 @@ def main():
         grid.append(list(line.strip()))
 
     print(day4_part1(grid))
+    print(day4_part2(grid))
 
 
 if __name__ == "__main__":
