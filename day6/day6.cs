@@ -8,31 +8,23 @@ class Day6
     {
         int res = 0;
 
-        foreach (var col in columns)
+        var col = columns[2];
+        bool add = true;
+        if (col[4] == "*") add = false;
+        for(int i = 0; i<4; i++)
         {
-            bool add = true;
-            int col_sum = 0;
-            var o = col[^1];
-            if (o == "*") add = false;
-            Console.Write("Column Sum : ");
-            for (int i = 0; i < 4; i++)
+            Console.Write(col[i] + " ");
+            if (add)
             {
-                if (add)
-                {
-                    Console.Write(col[i] + " +");
-                    col_sum += int.Parse(col[i]);
-                }
-                else
-                {
-                    col_sum = 1;
-                    Console.Write(col[i] + " *");
-                    col_sum *= int.Parse(col[i]);
-                }
-
+                res += int.Parse(col[i]);
             }
-            Console.WriteLine(" res = " + col_sum);
-            res += col_sum;
+            else
+            {
+                res *= int.Parse(col[i]);
+            }
         }
+        Console.WriteLine();
+        
 
         return res;
     }
